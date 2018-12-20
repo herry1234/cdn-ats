@@ -1,0 +1,16 @@
+version: '3.6'
+services:
+  ats:
+    image: ts
+    container_name: ats
+    ports:
+      - "8080:8080"
+    logging:
+      driver: gelf
+      options:
+        gelf-address: udp://localhost:12201
+    networks:
+      - mycdn
+networks:
+  mycdn:
+    external: true
